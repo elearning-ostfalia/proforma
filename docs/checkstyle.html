@@ -1,0 +1,66 @@
+<html>
+<head>
+<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+
+<h4>How to use Checkstyle</h4>
+<p>Checkstyle can be used by uploading an XML configuration file, which details which 
+checks are to be performed. Detailed documentation can be found on the 
+<a href="http://checkstyle.sourceforge.net/checks.html">Checkstyle website</a>. 
+At the moment, the Praktomat only supports Checkstyle version 4.4.</p>
+
+<p>The checks are</p>
+<ul>
+<li>that switch statements have a "default" choice
+<li>that types are not declared to be thrown
+<li>that the names of constants, members, methods and parameters follow the normal 
+conventions about using upper-/lowercase letters and numbers
+<li>that sizes for the file, line, etc are limited
+<li>that blocks are formatted so that left curly brackets are at the end of lines not 
+on a line by themselves etc.
+</ul>
+
+<p>Example of a configuration file:</p>
+<pre class='prettyprint'>&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_1.dtd"&gt;
+&lt;module name="Checker"&gt;
+    &lt;module name="TreeWalker"&gt;
+        &lt;!-- Checks for common coding problems               --&gt;
+        &lt;module name="MissingSwitchDefault"/&gt;
+        &lt;module name="IllegalThrows"/&gt;--&gt;
+
+        &lt;!-- Checks for Naming Conventions.                  --&gt;
+        &lt;module name="ConstantName"/&gt;
+        &lt;module name="MemberName"/&gt;
+        &lt;module name="MethodName"/&gt;
+        &lt;module name="ParameterName"/&gt;
+
+        &lt;!-- Checks for Size Violations.                     --&gt;
+        &lt;module name="FileLength"&gt;
+            &lt;property name="max" value="1000"/&gt;
+        &lt;/module&gt;
+        &lt;module name="LineLength"/&gt;
+        &lt;module name="MethodLength"/&gt;
+
+        &lt;!-- Checks for formatting of blocks.                --&gt;
+        &lt;module name="AvoidNestedBlocks"/&gt;
+        &lt;module name="EmptyBlock"/&gt;
+        &lt;module name="LeftCurly"/&gt;
+        &lt;module name="NeedBraces"/&gt;
+        &lt;module name="RightCurly"/&gt;
+    &lt;/module&gt;
+&lt;/module&gt;
+</pre>
+<p>A check that is provided without properties either has no properties  (such as 
+'AvoidNestedBlocks') 
+or has default values (for example the default value of 'LineLength' 
+is 80). Default values can be overwritten by using a &lt;property name="..." 
+value="..."/&gt; tag.</p>
+<p>Using <b>'RegExp'</b>, checks can be written for any textual pattern. 
+This can be single-line, multi-line and can be inclusive or exclusive of comments. 
+It can be specified how many matches are allowed.</p>
+

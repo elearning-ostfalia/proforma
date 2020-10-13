@@ -1,0 +1,60 @@
+<html>
+<head>
+<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+
+<h4>How to use JUnit</h4>
+<p>There are two versions of JUnit currently in use: Version 3 and 4. </p>
+<p>JUnit can only test methods, not general input/output of a program. For general 
+input/output one needs blackbox tests or one needs to write a method that returns the 
+output before it is actually printed. For example, a 'HelloWorld'  program could be 
+written like this:</p>
+<pre class="prettyprint">public class hello {
+    public String greet() {
+        return "Hello, world";
+    }
+    public static void main(String[] args) {
+        hello h = new hello();
+        System.out.println(h.greet());
+    }
+}
+</pre>
+<p>and then be tested with JUnit 3 like this:</p>
+<pre class="prettyprint">import junit.framework.TestCase;
+public class TestHello extends TestCase {
+    public void testHello()
+    {
+        hello h = new hello();
+        assertEquals(h.greet(), "Hello, world");
+    }
+}
+</pre>
+<p>Apart from assertEquals, other tests can be used (delta sets the precision for 
+float and double):</p>
+<pre class="prettyprint">assertEquals([message,] expected, actual)
+assertEquals([message,] expected, actual, delta)
+assertFalse([message,] condition)
+assertNotNull([message,] object)
+assertNotSame([message,] expected, actual)
+assertNull([message,] object)
+assertSame([message,] expected, actual)
+assertTrue([message,] condition)
+fail([message])
+failNotEquals(message, expected, actual)
+failNotSame(message, expected, actual)
+failSame(message)
+</pre>
+
+<p>The test should be uploaded as a .java file using the "Create File Checker"
+and be used with the JUnit Checker. The class file of the test will be generated
+by the Praktomat. Note: in the Create File Checker the filename
+should be the java file of the test,
+whereas in the JUnit Checker the class filename should be provided. In case of JUnit 4
+the class should be provided without the extension "class". <!-- bug -->
+The tests should 
+not be compiled as part of a package. Further documentation can be found on the 
+<a href="http://junit.sourceforge.net/junit3.8.1/index.html"> JUnit 3</a> and
+<a href="http://junit.sourceforge.net/index.html"> JUnit 4</a> websites.</p>
+

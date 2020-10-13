@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>Ostfalia - eCULTProjekt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+
+
+<h2>Programmieraufgaben und ABP-Workshops</h2>
+<p>Das E-Learning-Team der Ostfalia war Teil des
+eCULT-Verbundprojekts. Weitere Informationen über eCULT an der
+Ostfalia befinden sich in
+der <a href="index.html">Projektbeschreibung</a>. Die Homepage des
+eCULT-Verbunds <a title="http://www.ecult-niedersachsen.de/"
+href="http://www.ecult-niedersachsen.de/" target="_blank"
+rel="noopener noreferrer">http://www.ecult-niedersachsen.de/</a>
+bot weitere Angebote und didaktische Materialien.</p>
+
+<h2>Informationen für Entwickler</h2>
+
+<p>Im Rahmen des eCULT-Projekts wurde Software zur Einbindung von
+Programmieraufgaben in Learning-Management-Systeme (LMS)
+entwickelt. Folgende Software/Formate wurde an der Ostfalia
+(mit-)entwickelt:</p>
+<ul>
+  <li><a href="https://github.com/ProFormA/proformaxml">XML-Austauschformat
+  für Programmieraufgaben</a> bestehend aus Aufgabenformat,
+  Antwortformat und Einreichungsformat. (Entwickler: eCULT-Team der
+  Ostfalia und von anderen eCULT-Standorten)</li>
+  <li>Ein <a href="https://github.com/elearning-ostfalia">Moodle-Plugin
+  für Programmieraufgaben</a> (Entwicklerin: Karin Borm)</li>
+  <li>Mit dem
+  Austauschformat <a href="https://github.com/ProFormA/formatEditor">kompatibler
+  Editor für Programmieraufgaben</a>. Der Editor wurde in JavaScript
+  programmiert und kann direkt von
+  seiner <a href="https://media.elan-ev.de/proforma/editor/editor.html">Webseite</a>
+  ohne Installation verwendet werden oder er kann in bestehende LMS
+  als HTML eingebunden werden. (Entwicklerinnen: Uta Priss, Karin
+  Borm)</li>
+  <li>Erweiterung der Praktomatsoftware (als Grader) für die Anbindung
+  an Moodle. (Entwicklerin: Karin Borm; Oliver Rod)</li>
+  <li>REST-basierte Middleware für die Kommunikation zwischen Grader
+  und LMS. (Entwickler: Oliver Rod)</li>
+</ul>
+<p>Außerdem wird an der Uni Osnabrück derzeit eine Schnittstelle für
+unsere Middleware in StudIP entwickelt.</p>
+
+<p>Schema-Diagramm der Software:</p>
+
+<center><img src="img_middleware.jpg" alt="diagram" width="500" /> </center>
+
+<p>Beispiel eines Tests:</p>
+
+<center><img src="img_test.jpg" alt="test example" width="500" /> </center>
+
+</body></html>

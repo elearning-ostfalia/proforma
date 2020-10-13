@@ -1,0 +1,78 @@
+<html>
+<head>
+<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="prettify/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+
+<h4>How to use 'DejaGnu'</h4>
+<p>'DejaGnu' is a wrapper around the Unix command-line tool "expect" which was 
+originally written for communicating with programs that use a prompt (such as 
+telnet or ftp). It can be used to communicate with any command-line program.</p>
+<p>The example below tests whether a program outputs "Hello World!". It can be run on 
+the command-line with "expect" if the first spawn command is uncommented. When run in 
+the Praktomat via 'DejaGnu',  
+variables "JAVA" and "PROGRAM" are replaced after checking
+the environment for the location of java and the name of the student submitted 
+program. PROGRAM_exit can be added when run on the command-line. The Praktomat will 
+automatically add it to end the program. Printing "PASS" or "FAIL" is interpreted 
+accordingly by the Praktomat. The 'DejaGnu' variables PASS and FAIL can also be used 
+instead. The main tests are achieved via regular expressions. All input (test data 
+and prompts) must be escaped.</p>
+<pre class="prettyprint">set timeout 10
+set exit_cmd ""
+set feedback ""
+proc PROGRAM_start {} {
+    global spawn_id
+    # when using on the command-line with expect, use the first spawn command
+    # when using with DejaGnu and the Praktomat, use the second spawn command
+    # spawn "/usr/bin/java" "hello"
+    spawn "JAVA" "PROGRAM"
+
+}
+proc PROGRAM_exit {} {
+    global exit_cmd
+    expect "$exit_cmd\r\n"
+    expect {
+        eof     { send_user "PASS $exit_cmd" }
+        -re "." {
+            send_user "\nFAIL $exit_cmd (expected end-of-output)"
+        }
+    }
+}
+proc PROGRAM_interact {type request expr comment answer} {
+   global feedback
+   regsub -all {[].$^()*+?|[]} $expr {\\&amp;} q_expr
+   regsub -all {[].$^()*+?|[]} $request {\\&amp;} q_request
+   if { [string compare $type "test"] == 0 } {
+        expect {
+            -re "$q_request.*$q_expr" {
+               append feedback "PASS $expr $comment,"
+            }
+            -re "." {
+               append feedback "FAIL $expr $comment"
+            }
+            timeout {
+               append feedback "\nFAIL $expr (timeout) $comment";
+            }
+        }
+    }
+}
+PROGRAM_start
+PROGRAM_interact "test" "" "Hello world!" "" ""
+send_user "$feedback\n"
+# PROGRAM_exit 
+</pre>
+<p>In general, writing complex tests in this manner can be difficult. The expect 
+program spawns processes in parallel which can have undesired effects for the 
+formatting of the 
+output. It can be difficult to debug. On the command-line "expect -d" is useful for 
+debugging. The programming language used by expect is tcl.</p>
+<p>In the Praktomat, the expect file should be split into two parts: the code up to 
+"PROGRAM_start" becomes the setup file,  the rest is placed into the main test file. 
+The reason for this is so that different tests can be written using the same setup. 
+Different tests can be grouped in the same file, but if some tests are supposed to 
+be public, some are secret, several test files are needed.</p>
+
+
+</ul>
