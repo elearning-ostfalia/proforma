@@ -9,7 +9,7 @@
 <h2>Hinweise zur Benutzung der Programmieraufgaben für Lehrende</h2>
 <p>Der Praktomat überprüft studentische
 Einreichungen von Source-Code anhand von Tests (JUnit, Checkstyle,
-Compiler), die vom Dozenten eingerichtet werden.</p>
+Compiler), die von Lehrenden eingerichtet werden.</p>
 <ul>
   <li><a href="#beispielaufgaben">Beispiel-Aufgaben</a></li>
   <li><a href="#neueAufgabe">Anlegen einer neuen Aufgabe</a></li>
@@ -33,19 +33,56 @@ LON-CAPA</strong></h3>
 <h3><a id="neueAufgabe"></a> <strong>Anlegen einer Programmieraufgabe
 in LON-CAPA</strong></h3>
 <p>Zunächst sollte die Aufgabe mit
-dem <a href="https://media.elan-ev.de/proforma/editor/editor.html">Editor</a>
+dem <a href="https://proforma.github.io/formatEditor/proformaEditor.html">Editor</a>
 erstellt werden. Dann kann die Aufgabe im Autorenbereich in LON-CAPA
 wie folgt angelegt werden:</p>
 <ul>
   <li>Eine leere Aufgabe erstellen.</li>
-  <li>Die Problemdatei dem Editor entnehmen und nach
-  LON-CAPA kopieren/hochladen. </li>
+  <li>Das unten gezeigte Beispiel einer Problem-Datein als Schablone verwenden,
+      die blauen Elemente entsprechend ersetzen und in LON-CAPA als Problem-Datei 
+      anlegen. Dafür sollte die task.xml mit dem Editor erstellt werden.</li>
   <li>Die Aufgabe speichern und ansehen. Durch Hochladen mindestens
   jeweils einer falschen und einer richtigen Lösung sollte die Aufgabe
   getestet werden.</li>
   <li>Danach kann die Aufgabe veröffentlicht werden (bitte Metadaten
   eintragen).</li>
 </ul>
+
+<b>Beispiel einer Problem-Datei in LON-CAPA</b>
+
+<pre class='prettyprint'>
+&lt;problem&gt;
+&lt;import id="11"&gt;/res/fhwf/ecult/lib/proforma_v3.library&lt;/import&gt;
+&lt;import id="91"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Header.library&lt;/import&gt;
+
+&lt;script type="loncapa/perl"&gt;
+$externalurl = &proforma_url(0,'0', 'textfield', '<font color=blue>datename.java</font>','x-java','','v2.0.0');
+$ausgabe = &proforma_output(0,1);
+$args{'task'}='<font color=blue>BASE64-codierte task.xml</font>';
+$modelsolution = '&lt;pre&gt;<font color=blue>Musterlösung&lt;</font>/pre&gt;';
+&lt;/script&gt;
+&lt;startouttext /&gt;
+&lt;p&gt;<font color=blue>Aufgabentext</font>&lt;/p&gt;
+&lt;endouttext /&gt;
+&lt;startouttext /&gt;
+$error
+$ausgabe
+&lt;div id="codemirror-textfield"&gt;
+&lt;endouttext /&gt;
+&lt;externalresponse answer="" url="$externalurl" form="%args" id="1"&gt;
+&lt;textfield&gt;
+&lt;/textfield&gt;
+&lt;/externalresponse&gt;
+&lt;startouttext /&gt;
+&lt;/div&gt;
+&lt;endouttext /&gt;
+    &lt;postanswerdate&gt;&lt;startouttext /&gt;&lt;pre&gt;
+$modelsolution&lt;/pre&gt;&lt;endouttext /&gt;&lt;/postanswerdate&gt;
+&lt;import id="92"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Footer.library&lt;/import&gt;
+&lt;/problem&gt;
+</pre>
+
+
 <p>&nbsp;</p>
 <h3><a id="aufgabentexte"></a> <strong>Tipps für Aufgabentexte bei
 Aufgaben mit JUnit-Tests</strong></h3>
@@ -72,10 +109,7 @@ von negativen Zahlen soll die Methode 0 zurückgeben.</p>
 <h3><a id="FAQ"></a> <strong>FAQ bezüglich Programmieraufgaben in
 LON-CAPA</strong></h3>
 <ul>
-  <li>Wie erstellt man solche Aufgaben? Es gibt einen 
-  <a href="https://media.elan-ev.de/proforma/editor/editor.html">Editor</a>.
-  In den Editor eingebunden sind auch ein Hilfedokument und eine weitere
-  FAQ-Liste.</li>
+  <li>Wie erstellt man solche Aufgaben? Siehe oben.</li>
   <li>Wie viele Versuche sollte eine Programmieraufgabe erhalten? Am
   besten nicht mehr als drei. Die Studierenden sollten die Aufgabe
   erst in einer normalen Programmierumgebung lösen, bevor sie sie
