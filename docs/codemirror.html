@@ -5,7 +5,7 @@
 </head>
 <body onload="prettyPrint()">
 
-<h4>How to use Codemirror in LON-CAPA</h4>
+<h3>How to use Codemirror in LON-CAPA</h3>
 
 A variable <font color=blue>$CodemirrorMime</font> has to be set 
 within the LON-CAPA problem file before the import line of the Footer library.
@@ -24,7 +24,7 @@ x-csharp (for C#-code), x-php, javascript,
 manually assessed code, because automated marking is not provided for most
 of these languages.)
 
-<h4>Where to find the libraries</h4>
+<h3>Where to find the libraries</h3>
 
 Codemirror can be used to provide better editing support for textareas
 for example for the LON-CAPA problem types "external response" and "essay response".
@@ -40,7 +40,7 @@ for use in LON-CAPA. The current eCULT configuration includes:
 xml.js, active-line.js, closebrackets.js, matchbrackets.js, matchtags.js.</font>
 
 
-<h4>How to use the libraries</h4>
+<h3>How to use the libraries</h3>
 
 The eCULT Codemirror libraries can be used by any LON-CAPA author. In order
 to use the libraries, the following two lines of code need to be included in the 
@@ -55,7 +55,7 @@ within the LON-CAPA problem file before the import line of the Footer library.
 &lt;import id="92"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Footer.library&lt;/import&gt;
 </pre>
 
-<h4>The eCULT CodeMirror_Header.library</h4>
+<h3>The eCULT CodeMirror_Header.library</h3>
 
 An "&lt;allow&gt;"
 tag in LON-CAPA ensures that the resource has permission to be viewed. 
@@ -73,7 +73,7 @@ something like ".CodeMirror div { margin: 0; padding-bottom: 0; }".
 &lt;/library&gt;
 </pre>
 
-<h4>The eCULT CodeMirror_Footer.library</h4>
+<h3>The eCULT CodeMirror_Footer.library</h3>
 
 The eCULT library currently provides the following:
 
@@ -171,3 +171,11 @@ var editor = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0
 
 <b>Hint:</b> when making changes to the footer library, it may be necessary to empty
 the browser cache to see the changes.
+
+<hr>
+<address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
+<a href="https://elearning-ostfalia.github.io/proforma/">
+https://elearning-ostfalia.github.io/proforma/</a></address>
+
+</body>
+</html>
