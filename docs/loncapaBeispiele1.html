@@ -1,0 +1,222 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/*html*; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="../proforma.css" />
+</head>
+<body>
+
+<h3>Perl-Code Ausprobieren</h3>
+
+<h3>1) Variable, Zahlen und Strings</h3>
+<textarea rows=15 cols=60>
+<problem>
+<script type="loncapa/perl">
+   $a = 5;
+   $b = 17;
+   $ergebnis1 = $a * $b;
+   $c = "Hello World";
+   $ergebnis2 = lc($c);
+</script>
+
+<startouttext />
+   Ergebnis 1: $ergebnis1<br />
+   Ergebnis 2: $ergebnis2
+<endouttext />
+</problem>
+</textarea>
+
+<h3>Aufgabe:</h3>
+<p>a) ergebnis1 soll den doppelten Wert und ergebnis2 zweimal die Zeichenfolge enthalten.
+
+<h3>2) Zufällige Zahlen auswählen</h3>
+
+<textarea rows=11 cols=60>
+<problem>
+<script type="loncapa/perl">
+   $ergebnis = &random(3,6,1);
+</script>
+
+<startouttext />
+   Ergebnis: $ergebnis
+<endouttext />
+</problem>
+</textarea>
+
+<h3>Aufgaben:</h3>
+<p>
+a) Eine zufällige gerade Zahl zwischen -10 und 10 auswählen. <br>
+b) Eine zufällige Zahl aus {-1, -0.8, -0.6, ..., 0.6, 0.8, 1} auswählen. <br>
+c) Das Ergebnis soll 3 zu einer zufälligen Zahl zwischen 1 und 100 hinzuaddieren, 
+dann mit 2 multiplizieren,
+4 abziehen, das Doppelte der ursprünglichen Zahl abziehen und dann 3 hinzuzählen. 
+
+<h3>3) If-Statement</h3>
+
+<textarea rows=15 cols=60>
+<problem>
+<script type="loncapa/perl">
+   $zahl = &random(1,2,1); 
+   if ($zahl == 1) {
+     $ergebnis = "toll";
+   } else {
+     $ergebnis = "schlecht";
+   }
+</script>
+
+<startouttext />
+   Ergebnis: $zahl ist $ergebnis.
+<endouttext />
+</problem>
+</textarea>
+
+<h3>Aufgabe:</h3>
+<p>
+a) Für eine zufällige Zahl zwischen 1 und 100 soll das Ergebnis ausgeben, 
+ob die Zahl kleiner als 30, zwischen 30 und 60 oder größer als 60 ist.
+(Tipps: mehrere Bedingungen eines if-Statements werden mit "and" oder "or" verbunden.
+Mehrere if-Statements werden mit if (..){...} elsif (..){...} else {...} 
+aneinandergereiht.)
+
+<h3>4) Listen</h3>
+
+<textarea rows=16 cols=60>
+<problem>
+<script type="loncapa/perl">
+   @namen = ("Susanne", "Peter", "Marie", "Phil", "Iris", "Klaus");
+   foreach $name (@namen) {
+     if (length($name) == 7) {
+        $ergebnis = $name;
+        last;
+     }
+   }   
+</script>
+
+<startouttext />
+   Ergebnis: $ergebnis
+<endouttext />
+</problem>
+</textarea>
+<p>
+Tipp: das Zeichen @ enthält ein kleines "a", da Listen auch Array genannt werden.
+
+<h3>Aufgaben:</h3>
+
+<p>
+a) Den ersten Namen, der aus 4 Buchstaben besteht, finden.<br>
+b) Den letzten Namen, der aus 4 Buchstaben besteht, finden.<br>
+
+<h3>Achtung:</h3>
+
+<p>Bei einer Schleife werden die Variablen eventuell bei jedem Durchgang überschrieben,
+so dass man nur das Resultat des letzten Durchgangs erhält. Um das zu vermeiden,
+kann man die Schleife nach einem gefundenen Resultat mit "last" abbrechen. Oder
+man kann die jeweiligen Resultate an eine Variable anhängen, wie im nächsten Beispiel.
+Man könnte dafür auch eine zweite Liste (zB @resultatliste) verwenden und dann die 
+Ergebnise mit "push(@resultatliste, $ergebnis);" jeweils hinzufügen.
+
+<h3>5) Eine Liste in eine Tabelle schreiben</h3>
+
+<textarea rows=15 cols=60>
+<problem>
+<script type="loncapa/perl">
+   $ergebnis = "<p><table border=1 cellpadding=5>";
+   @namen = ("Susanne", "Peter", "Marie", "Phil", "Iris", "Klaus");
+   foreach $name (@namen) {
+      $ergebnis = "$ergebnis<tr><td>$name</td></tr>";
+   }   
+   $ergebnis = "$ergebnis</table></p>";
+</script>
+
+<startouttext />
+   Ergebnis: $ergebnis
+<endouttext />
+</problem>
+</textarea>
+
+<h3>Aufgabe</h3>
+
+<p>a) Eine zweite Spalte für die Wortlänge erzeugen. (Tipp: die Wortlänge zunächst
+in einer Variablen $laenge abspeichern und dann in $ergebnis einfügen.)
+
+<h3>6) Zufällig aus einer Liste auswählen</h3>
+
+<textarea rows=21 cols=60>
+<problem>
+<script type="loncapa/perl">
+   @namen = ("Susanne", "Peter", "Marie", "Phil", "Iris", "Klaus");
+   $ergebnis0 = "@namen";
+   $ergebnis1 =$namen[1];
+   $index = &random(0,5,1);
+   $ergebnis2 = $namen[$index];
+   @permutation = &random_permutation(&random(1,1000000,1), @namen);
+   $ergebnis3 = "@permutation";
+   $ergebnis4 = $permutation[0];
+</script>
+
+<startouttext />
+   <p>Die ursprüngliche Liste: $ergebnis0<br />
+   Das zweite Element: $ergebnis1<br />
+   Ein zufälliges Element: $ergebnis2<br />
+   Alle Elemente in zufälliger Reihenfolge: $ergebnis3<br />
+   Das erste Element der neuen Reihenfolge: $ergebnis4</p>
+<endouttext />
+</problem>
+</textarea>
+
+
+<h3>7) Eine Liste mit zwei Spalten</h3>
+
+<textarea rows=17 cols=60>
+<problem>
+<script type="loncapa/perl">
+   $ergebnis = "<p><table border=1 cellpadding=5><tr><th>Name</th><th>Semester</th></tr>";
+   %studis = ("Susanne" => "1 Semester", "Peter" => "2 Semester", 
+             "Marie" => "2 Semester", "Phil" => "3 Semester");
+   foreach $name (keys %studis) {
+      $ergebnis = "$ergebnis<tr><td>$name</td><td>$studis{$name}</tr>";
+   }   
+   $ergebnis = "$ergebnis</table></p>";
+</script>
+
+<startouttext />
+   Ergebnis: $ergebnis
+<endouttext />
+</problem>
+</textarea>
+
+<h3>Aufgabe</h3>
+
+<p>a) Die Tabelle anhand der Vornamen alphabetisch sortieren (mit dem Befehl sort).
+
+<h3>Aufgabe</h3>
+
+<p>Wann und wie werden die Zeichen $, @, % und & verwendet?<br>
+Das Zeichen # kann für Kommentare verwendet werden, allerdings nur in
+den <script type="loncapa/perl">...</script> Bereichen.
+Welche dieser Aussagen sind richtig oder falsch:
+
+<ul>
+<li>@liste = ("Hello", 1);
+<li>$liste[0];
+<li>$liste["Hello"];
+<li>@liste[1];
+<li>%studis = ("Susanne" => "1 Semester", "Peter" => "2 Semester");
+<li>$studis[0];
+<li>$studis["Susanne"];
+<li>$studis{"Susanne"};
+<li>$random(3,6,1);
+</ul>
+
+<hr>
+<address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
+<a href="https://elearning-ostfalia.github.io/proforma/">
+https://elearning-ostfalia.github.io/proforma/</a></address>
+
+</body>
+</html>
+
+
+
+
+
+
