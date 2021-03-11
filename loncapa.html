@@ -35,13 +35,14 @@ LON-CAPA</strong></h3>
 in LON-CAPA</strong></h3>
 <p>Zunächst sollte die Aufgabe mit
 dem <a href="https://proforma.github.io/formatEditor/proformaEditor.html">Editor</a>
-erstellt werden. Dann kann die Aufgabe im Autorenbereich in LON-CAPA
-wie folgt angelegt werden:</p>
+erstellt und als XML-Datei gespeichert werden. Dann kann die Aufgabe im Autorenbereich
+in LON-CAPA wie folgt angelegt werden:</p>
 <ul>
-  <li>Eine leere Aufgabe erstellen.</li>
-  <li>Das unten gezeigte Beispiel einer Problem-Datein als Schablone verwenden,
-      die blauen Elemente entsprechend ersetzen und in LON-CAPA als Problem-Datei 
-      anlegen. Dafür sollte die task.xml mit dem Editor erstellt werden.</li>
+  <li>Mit <a href="docs/convertXMLtoProblem"> diesem Python-Script</a> kann aus dem
+      XML-Format eine LON-CAPA-Problem-Datei erzeugt werden und umgekehrt. Der 
+      Aufgabentext, die Musterlösung und eine mögliche Code-Schablone müssen dann
+      noch von Hand in die Problem-Datei eingefügt werden.</li>
+  <li>Die Datei in LON-CAPA als Problem-Datei anlegen. </li>
   <li>Die Aufgabe speichern und ansehen. Durch Hochladen mindestens
   jeweils einer falschen und einer richtigen Lösung sollte die Aufgabe
   getestet werden.</li>
@@ -49,7 +50,10 @@ wie folgt angelegt werden:</p>
   eintragen).</li>
 </ul>
 
-<b>Beispiel einer Problem-Datei in LON-CAPA</b>
+<details>
+<summary><b>Beispiel einer Problem-Datei in LON-CAPA</b></summary>
+
+Die blauen Felder sind zu ersetzen.
 
 <pre class='prettyprint'>
 &lt;problem&gt;
@@ -57,7 +61,7 @@ wie folgt angelegt werden:</p>
 &lt;import id="91"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Header.library&lt;/import&gt;
 
 &lt;script type="loncapa/perl"&gt;
-$externalurl = &proforma_url(0,'0', 'textfield', '<font color=blue>datename.java</font>','x-java','','v2.0.0');
+$externalurl = &proforma_url(0,'0', 'textfield', '<font color=blue>dateiname.java</font>','x-java','','v2.0.0');
 $ausgabe = &proforma_output(0,1);
 $args{'task'}='<font color=blue>BASE64-codierte task.xml</font>';
 $modelsolution = '&lt;pre&gt;<font color=blue>Musterlösung&lt;</font>/pre&gt;';
@@ -72,6 +76,7 @@ $ausgabe
 &lt;endouttext /&gt;
 &lt;externalresponse answer="" url="$externalurl" form="%args" id="1"&gt;
 &lt;textfield&gt;
+<font color=blue>Hier kann eine Code-Schablone stehen</font>
 &lt;/textfield&gt;
 &lt;/externalresponse&gt;
 &lt;startouttext /&gt;
@@ -82,7 +87,7 @@ $modelsolution&lt;/pre&gt;&lt;endouttext /&gt;&lt;/postanswerdate&gt;
 &lt;import id="92"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Footer.library&lt;/import&gt;
 &lt;/problem&gt;
 </pre>
-
+</details>
 
 <p>&nbsp;</p>
 <h3><a id="aufgabentexte"></a> <strong>Tipps für Aufgabentexte bei

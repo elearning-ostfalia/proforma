@@ -1,0 +1,77 @@
+# Aus XML-Datei eine Problemdatei erzeugen:
+#       python convertXMLtoProblem filename.xml filename.problem
+# aus Problemdatei eine XML-Datei erzeugen:
+#       python convertXMLtoProblem filename.problem filename.xml
+
+import sys
+import base64
+from re import compile
+
+match_filetype = compile(r"xml") 
+match_base64xmlstart = compile(r"args{'task'}='(.*)")
+match_base64xmlstop = compile(r"(.*)';")
+
+tasktemplate_part1 = """<problem>
+
+<import id="11">/res/fhwf/ecult/lib/proforma_v3.library</import>
+<import id="91">/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Header.library</import>
+
+<script type="loncapa/perl">
+# partID, redundant taskID, submissiontype, filename of submitted file,Mime type, 
+#    nothing, version
+$externalurl = &proforma_url(0,'0', 'textfield', 'filename.setlx','setlX','','v2.0.0');
+$ausgabe = &proforma_output(0,1); # LON-CAPA partID, LON-CAPA responseID 
+
+$args{'task'}='"""
+
+tasktemplate_part2 = """';
+</script>
+<startouttext />
+TASK DESCRIPTION
+<endouttext />
+
+<startouttext />
+$error
+$ausgabe
+<div id="codemirror-textfield">
+<endouttext />
+
+<externalresponse  answer="" url="$externalurl" form="%args" id="1">
+<textfield>
+CODE TEMPLATE
+</textfield>
+</externalresponse>
+
+<startouttext />
+</div>
+<endouttext />
+<postanswerdate><startouttext /><pre>MODELSOLUTION</pre><endouttext /></postanswerdate>
+<import id="92">/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Footer.library</import>
+</problem>
+"""
+
+file1 = open(str(sys.argv[1]),"r")
+
+if match_filetype.search(str(sys.argv[1])):      # xml to problem
+   xmlfile = file1.read()
+   file1.close()
+   encoded = base64.encodebytes(str.encode(xmlfile))
+   task_as_base64 = encoded.decode('ascii')
+   task_as_base64 = task_as_base64.strip("\n")
+   print (tasktemplate_part1+task_as_base64+tasktemplate_part2)
+
+else:                                            # problem to xml
+   problemfile = file1.readlines()
+   file1.close()
+   stringcontent =""
+
+   for elem in problemfile: 
+      stringcontent += elem
+      if match_base64xmlstart.search(elem):
+         stringcontent = match_base64xmlstart.search(elem).group(1)+"\n"
+      if match_base64xmlstop.search(elem):
+         stringcontent = stringcontent.strip("';\n")
+         break
+   stringcontent = base64.b64decode(stringcontent)
+   print(stringcontent.decode("utf-8"))    
+
