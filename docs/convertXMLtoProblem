@@ -1,7 +1,7 @@
 # Aus XML-Datei eine Problemdatei erzeugen:
-#       python convertXMLtoProblem filename.xml filename.problem
+#       python convertXMLtoProblem filename.xml > filename.problem
 # aus Problemdatei eine XML-Datei erzeugen:
-#       python convertXMLtoProblem filename.problem filename.xml
+#       python convertXMLtoProblem filename.problem > filename.xml
 
 import sys
 import base64

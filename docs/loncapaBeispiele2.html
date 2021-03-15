@@ -5,8 +5,12 @@
 </head>
 <body>
 
+<h3>LON-CAPA Beispiele - Teil 2</h3>
+
 <h3>Numerical Response (Vergleich von Zahlenwerten und eventuell Einheiten)</h3>
-<textarea rows=17 cols=80>
+
+<details><summary>Beispiel</summary>
+<textarea rows=18 cols=100>
 <problem>
 <script type="loncapa/perl">
    $a=&random(1,10,1);
@@ -24,12 +28,15 @@
 </numericalresponse>
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgaben:</h3>
 
 <p>a) Welche Toleranz benötigt man, falls $c = $a/$b?
 
 <h3>FormulaResponse (Vergleich von Formeln)</h3>
+
+<details><summary>Beispiel</summary>
 <textarea rows=17 cols=60>
 <problem>
 <script type="loncapa/perl">
@@ -48,10 +55,12 @@
 </formularesponse>
 </problem>
 </textarea>
-
+</details>
 
 <h3>Mehrere Antworten</h3>
-<textarea rows=22 cols=80>
+
+<details><summary>Beispiel</summary>
+<textarea rows=22 cols=90>
 <problem>
 <script type="loncapa/perl">
    $a = &random(1,7,1);
@@ -74,12 +83,14 @@
 </numericalresponse>
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgaben:</h3>
 
 <p>a) Wie kann man fordern, dass der negative Wert zuerst eingegeben werden soll?<br>
 b) Was ändert sich, wenn diese answergroup verwendet wird:<br>
 
+<details><summary>Beispiel</summary>
 <textarea rows=9 cols=40>
     <answergroup type="ordered">
         <answer type="unordered">
@@ -90,11 +101,13 @@ b) Was ändert sich, wenn diese answergroup verwendet wird:<br>
         </answer>
     </answergroup>
 </textarea>
+</details>
 
 <h3>MathResponse mit Maxima</h3>
 
 <p>Nur die studentische Eingabe wird verwendet:<p>
 
+<details><summary>Beispiel</summary>
 <textarea rows=15 cols=80>
 <problem>
 <startouttext />
@@ -111,10 +124,12 @@ b) Was ändert sich, wenn diese answergroup verwendet wird:<br>
 </mathresponse>
 </problem>
 </textarea>
+</details>
 
 <p>Sowohl die studentische Eingabe als auch vorgegebene, zufällige Werte werden verwendet.
 </p>
 
+<details><summary>Beispiel</summary>
 <textarea rows=23 cols=80>
 <problem>
 <script type="loncapa/perl">
@@ -138,11 +153,29 @@ b) Was ändert sich, wenn diese answergroup verwendet wird:<br>
 </mathresponse>
 </problem>
 </textarea>
+</details>
 
+<p>&nbsp;</p>
 <hr>
+<center>
 <address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
 <a href="https://elearning-ostfalia.github.io/proforma/">
-https://elearning-ostfalia.github.io/proforma/</a></address>
+https://elearning-ostfalia.github.io/proforma/</a>
+</address>
+
+<p>
+Dieses Vorhaben wurde aus Mitteln des Bundesministeriums für Bildung und
+Forschung unter den Förderkennzeichen 01PL11066H und 01PL16066H gefördert.
+Die Verantwortung für den Inhalt dieser Webseite liegt bei den Autorinnen.</p>
+
+<table>
+<tr>
+<td><img src="ostfaliaEcultLogo.jpg" alt="eCULT" width="154" height="88"/>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><img src="BMBFLogo.jpg" alt="BMBF"/>
+</table>
+</center>
+
 
 </body>
 </html>

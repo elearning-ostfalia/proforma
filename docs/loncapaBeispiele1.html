@@ -5,9 +5,12 @@
 </head>
 <body>
 
+<h3>LON-CAPA Beispiele - Teil 1</h3>
+
 <h3>Perl-Code Ausprobieren</h3>
 
 <h3>1) Variable, Zahlen und Strings</h3>
+<details><summary>Beispiel</summary>
 <textarea rows=15 cols=60>
 <problem>
 <script type="loncapa/perl">
@@ -24,12 +27,14 @@
 <endouttext />
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgabe:</h3>
 <p>a) ergebnis1 soll den doppelten Wert und ergebnis2 zweimal die Zeichenfolge enthalten.
 
 <h3>2) Zufällige Zahlen auswählen</h3>
 
+<details><summary>Beispiel</summary>
 <textarea rows=11 cols=60>
 <problem>
 <script type="loncapa/perl">
@@ -41,6 +46,7 @@
 <endouttext />
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgaben:</h3>
 <p>
@@ -52,6 +58,7 @@ dann mit 2 multiplizieren,
 
 <h3>3) If-Statement</h3>
 
+<details><summary>Beispiel</summary>
 <textarea rows=15 cols=60>
 <problem>
 <script type="loncapa/perl">
@@ -68,6 +75,7 @@ dann mit 2 multiplizieren,
 <endouttext />
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgabe:</h3>
 <p>
@@ -79,7 +87,8 @@ aneinandergereiht.)
 
 <h3>4) Listen</h3>
 
-<textarea rows=16 cols=60>
+<details><summary>Beispiel</summary>
+<textarea rows=16 cols=70>
 <problem>
 <script type="loncapa/perl">
    @namen = ("Susanne", "Peter", "Marie", "Phil", "Iris", "Klaus");
@@ -96,6 +105,7 @@ aneinandergereiht.)
 <endouttext />
 </problem>
 </textarea>
+</details>
 <p>
 Tipp: das Zeichen @ enthält ein kleines "a", da Listen auch Array genannt werden.
 
@@ -116,7 +126,8 @@ Ergebnise mit "push(@resultatliste, $ergebnis);" jeweils hinzufügen.
 
 <h3>5) Eine Liste in eine Tabelle schreiben</h3>
 
-<textarea rows=15 cols=60>
+<details><summary>Beispiel</summary>
+<textarea rows=15 cols=70>
 <problem>
 <script type="loncapa/perl">
    $ergebnis = "<p><table border=1 cellpadding=5>";
@@ -132,6 +143,7 @@ Ergebnise mit "push(@resultatliste, $ergebnis);" jeweils hinzufügen.
 <endouttext />
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgabe</h3>
 
@@ -140,7 +152,8 @@ in einer Variablen $laenge abspeichern und dann in $ergebnis einfügen.)
 
 <h3>6) Zufällig aus einer Liste auswählen</h3>
 
-<textarea rows=21 cols=60>
+<details><summary>Beispiel</summary>
+<textarea rows=22 cols=70>
 <problem>
 <script type="loncapa/perl">
    @namen = ("Susanne", "Peter", "Marie", "Phil", "Iris", "Klaus");
@@ -162,11 +175,12 @@ in einer Variablen $laenge abspeichern und dann in $ergebnis einfügen.)
 <endouttext />
 </problem>
 </textarea>
-
+</details>
 
 <h3>7) Eine Liste mit zwei Spalten</h3>
 
-<textarea rows=17 cols=60>
+<details><summary>Beispiel</summary>
+<textarea rows=17 cols=90>
 <problem>
 <script type="loncapa/perl">
    $ergebnis = "<p><table border=1 cellpadding=5><tr><th>Name</th><th>Semester</th></tr>";
@@ -183,6 +197,7 @@ in einer Variablen $laenge abspeichern und dann in $ergebnis einfügen.)
 <endouttext />
 </problem>
 </textarea>
+</details>
 
 <h3>Aufgabe</h3>
 
@@ -207,10 +222,27 @@ Welche dieser Aussagen sind richtig oder falsch:
 <li>$random(3,6,1);
 </ul>
 
+<p>&nbsp;</p>
 <hr>
+<center>
 <address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
 <a href="https://elearning-ostfalia.github.io/proforma/">
-https://elearning-ostfalia.github.io/proforma/</a></address>
+https://elearning-ostfalia.github.io/proforma/</a>
+</address>
+
+<p>
+Dieses Vorhaben wurde aus Mitteln des Bundesministeriums für Bildung und
+Forschung unter den Förderkennzeichen 01PL11066H und 01PL16066H gefördert.
+Die Verantwortung für den Inhalt dieser Webseite liegt bei den Autorinnen.</p>
+
+<table>
+<tr>
+<td><img src="ostfaliaEcultLogo.jpg" alt="eCULT" width="154" height="88"/>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><img src="BMBFLogo.jpg" alt="BMBF"/>
+</table>
+</center>
+
 
 </body>
 </html>

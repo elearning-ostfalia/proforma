@@ -1,9 +1,8 @@
 <html>
 <head>
-<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../proforma.css" />
 </head>
-<body onload="prettyPrint()">
+<body>
 
 <h3>How to use Checkstyle</h3>
 <p>Checkstyle can be used by uploading an XML configuration file, which details which 
@@ -22,8 +21,10 @@ conventions about using upper-/lowercase letters and numbers
 on a line by themselves etc.
 </ul>
 
-<p>Example of a configuration file:</p>
-<pre class='prettyprint'>&lt;?xml version="1.0"?&gt;
+<details><summary><b>Example of a configuration file:</b></summary>
+
+<textarea rows=15 cols=70>
+&lt;?xml version="1.0"?&gt;
 &lt;!DOCTYPE module PUBLIC
     "-//Puppy Crawl//DTD Check Configuration 1.1//EN"
     "http://www.puppycrawl.com/dtds/configuration_1_1.dtd"&gt;
@@ -54,7 +55,8 @@ on a line by themselves etc.
         &lt;module name="RightCurly"/&gt;
     &lt;/module&gt;
 &lt;/module&gt;
-</pre>
+</textarea>
+</details>
 <p>A check that is provided without properties either has no properties  (such as 
 'AvoidNestedBlocks') 
 or has default values (for example the default value of 'LineLength' 
@@ -64,10 +66,27 @@ value="..."/&gt; tag.</p>
 This can be single-line, multi-line and can be inclusive or exclusive of comments. 
 It can be specified how many matches are allowed.</p>
 
+<p>&nbsp;</p>
 <hr>
+<center>
 <address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
 <a href="https://elearning-ostfalia.github.io/proforma/">
-https://elearning-ostfalia.github.io/proforma/</a></address>
+https://elearning-ostfalia.github.io/proforma/</a>
+</address>
+
+<p>
+Dieses Vorhaben wurde aus Mitteln des Bundesministeriums für Bildung und
+Forschung unter den Förderkennzeichen 01PL11066H und 01PL16066H gefördert.
+Die Verantwortung für den Inhalt dieser Webseite liegt bei den Autorinnen.</p>
+
+<table>
+<tr>
+<td><img src="ostfaliaEcultLogo.jpg" alt="eCULT" width="154" height="88"/>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><img src="BMBFLogo.jpg" alt="BMBF"/>
+</table>
+</center>
+
 
 </body>
 </html>

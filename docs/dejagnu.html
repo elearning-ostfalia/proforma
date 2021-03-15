@@ -1,9 +1,8 @@
 <html>
 <head>
-<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../proforma.css" />
 </head>
-<body onload="prettyPrint()">
+<body>
 
 <h3>How to use 'DejaGnu'</h3>
 <p>'DejaGnu' is a wrapper around the Unix command-line tool "expect" which was 
@@ -19,7 +18,9 @@ automatically add it to end the program. Printing "PASS" or "FAIL" is interprete
 accordingly by the Praktomat. The 'DejaGnu' variables PASS and FAIL can also be used 
 instead. The main tests are achieved via regular expressions. All input (test data 
 and prompts) must be escaped.</p>
-<pre class="prettyprint">set timeout 10
+<details><summary><b>Dejagnu example</b></summary>
+<textarea rows=20 cols=85>
+set timeout 10
 set exit_cmd ""
 set feedback ""
 proc PROGRAM_start {} {
@@ -62,7 +63,8 @@ PROGRAM_start
 PROGRAM_interact "test" "" "Hello world!" "" ""
 send_user "$feedback\n"
 # PROGRAM_exit 
-</pre>
+</textarea>
+</details>
 <p>In general, writing complex tests in this manner can be difficult. The expect 
 program spawns processes in parallel which can have undesired effects for the 
 formatting of the 
@@ -73,13 +75,28 @@ debugging. The programming language used by expect is tcl.</p>
 The reason for this is so that different tests can be written using the same setup. 
 Different tests can be grouped in the same file, but if some tests are supposed to 
 be public, some are secret, several test files are needed.</p>
-
-
 </ul>
+
+<p>&nbsp;</p>
 <hr>
+<center>
 <address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
 <a href="https://elearning-ostfalia.github.io/proforma/">
-https://elearning-ostfalia.github.io/proforma/</a></address>
+https://elearning-ostfalia.github.io/proforma/</a>
+</address>
+
+<p>
+Dieses Vorhaben wurde aus Mitteln des Bundesministeriums für Bildung und
+Forschung unter den Förderkennzeichen 01PL11066H und 01PL16066H gefördert.
+Die Verantwortung für den Inhalt dieser Webseite liegt bei den Autorinnen.</p>
+
+<table>
+<tr>
+<td><img src="ostfaliaEcultLogo.jpg" alt="eCULT" width="154" height="88"/>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><img src="BMBFLogo.jpg" alt="BMBF"/>
+</table>
+</center>
 
 </body>
 </html>

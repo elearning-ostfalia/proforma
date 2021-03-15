@@ -1,17 +1,18 @@
 <html>
 <head>
-<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../proforma.css" />
 </head>
-<body onload="prettyPrint()">
+<body>
 
-<h3>How to use JUnit</h3>
-<p>There are two versions of JUnit currently in use: Version 3 and 4. </p>
+<h3>How to use JUnit (Versions 3 and 4)</h3>
+
 <p>JUnit can only test methods, not general input/output of a program. For general 
 input/output one needs blackbox tests or one needs to write a method that returns the 
-output before it is actually printed. For example, a 'HelloWorld'  program could be 
-written like this:</p>
-<pre class="prettyprint">public class hello {
+output before it is actually printed.</p>
+
+<details><summary><b>Hello World example</b></summary>
+<textarea rows=10 cols=65>
+public class hello {
     public String greet() {
         return "Hello, world";
     }
@@ -20,9 +21,12 @@ written like this:</p>
         System.out.println(h.greet());
     }
 }
-</pre>
-<p>and then be tested with JUnit 3 like this:</p>
-<pre class="prettyprint">import junit.framework.TestCase;
+</textarea>
+</details>
+
+<details><summary><b>JUnit 3 example</b></summary>
+<textarea rows=9 cols=65>
+import junit.framework.TestCase;
 public class TestHello extends TestCase {
     public void testHello()
     {
@@ -30,10 +34,14 @@ public class TestHello extends TestCase {
         assertEquals(h.greet(), "Hello, world");
     }
 }
-</pre>
+</textarea>
+</details>
 <p>Apart from assertEquals, other tests can be used (delta sets the precision for 
 float and double):</p>
-<pre class="prettyprint">assertEquals([message,] expected, actual)
+
+<details><summary><b>Examples of other tests</b></summary>
+<textarea rows=14 cols=65>
+assertEquals([message,] expected, actual)
 assertEquals([message,] expected, actual, delta)
 assertFalse([message,] condition)
 assertNotNull([message,] object)
@@ -45,7 +53,8 @@ fail([message])
 failNotEquals(message, expected, actual)
 failNotSame(message, expected, actual)
 failSame(message)
-</pre>
+</textarea>
+</details>
 
 <p>The test should be uploaded as a .java file using the "Create File Checker"
 and be used with the JUnit Checker. The class file of the test will be generated
@@ -58,10 +67,27 @@ not be compiled as part of a package. Further documentation can be found on the
 <a href="http://junit.sourceforge.net/junit3.8.1/index.html"> JUnit 3</a> and
 <a href="http://junit.sourceforge.net/index.html"> JUnit 4</a> websites.</p>
 
+<p>&nbsp;</p>
 <hr>
+<center>
 <address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
 <a href="https://elearning-ostfalia.github.io/proforma/">
-https://elearning-ostfalia.github.io/proforma/</a></address>
+https://elearning-ostfalia.github.io/proforma/</a>
+</address>
+
+<p>
+Dieses Vorhaben wurde aus Mitteln des Bundesministeriums für Bildung und
+Forschung unter den Förderkennzeichen 01PL11066H und 01PL16066H gefördert.
+Die Verantwortung für den Inhalt dieser Webseite liegt bei den Autorinnen.</p>
+
+<table>
+<tr>
+<td><img src="ostfaliaEcultLogo.jpg" alt="eCULT" width="154" height="88"/>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><img src="BMBFLogo.jpg" alt="BMBF"/>
+</table>
+</center>
+
 
 </body>
 </html>

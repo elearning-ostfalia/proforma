@@ -1,15 +1,14 @@
 <html>
 <head>
-<link href="prettify/prettify.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="prettify/prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="../proforma.css" />
 </head>
-<body onload="prettyPrint()">
+<body>
 
 <h3>How to use Codemirror in LON-CAPA</h3>
 
-A variable <font color=blue>$CodemirrorMime</font> has to be set 
+<p>A variable <font color=blue>$CodemirrorMime</font> has to be set 
 within the LON-CAPA problem file before the import line of the Footer library.
-The choices are
+The choices are</p>
 
 <ul>
 <li>x-java, x-python, x-csrc (for C-code) 
@@ -20,13 +19,13 @@ x-csharp (for C#-code), x-php, javascript,
 <li>an empty value (which will result in line numbers and checking of brackets)
 </ul>
 
-(It should be emphasised that most of these choices are only useful for
+<p>(It should be emphasised that most of these choices are only useful for
 manually assessed code, because automated marking is not provided for most
-of these languages.)
+of these languages.)</p>
 
 <h3>Where to find the libraries</h3>
 
-Codemirror can be used to provide better editing support for textareas
+<p>Codemirror can be used to provide better editing support for textareas
 for example for the LON-CAPA problem types "external response" and "essay response".
 It has modes for different programming languages. Libraries are provided
 in the following LON-CAPA location <font color=blue>
@@ -37,47 +36,49 @@ http://codemirror.net/doc/compress.html</a>
 and then be configured
 for use in LON-CAPA. The current eCULT configuration includes:
 <font color=blue>codemirror.js, clike.js, javascript.js, php.js, python.js, sql.js,
-xml.js, active-line.js, closebrackets.js, matchbrackets.js, matchtags.js.</font>
-
+xml.js, active-line.js, closebrackets.js, matchbrackets.js, matchtags.js.</font></p>
 
 <h3>How to use the libraries</h3>
 
-The eCULT Codemirror libraries can be used by any LON-CAPA author. In order
+<p>The eCULT Codemirror libraries can be used by any LON-CAPA author. In order
 to use the libraries, the following two lines of code need to be included in the 
 problem file. The first line should be at the beginning of the problem file,
 the second one at the end.
 A variable <font color=blue>$CodemirrorMime</font> has
 to be set 
-within the LON-CAPA problem file before the import line of the Footer library.
+within the LON-CAPA problem file before the import line of the Footer library.</p>
 
-<pre class='prettyprint'>
+<pre>
 &lt;import id="91"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Header.library&lt;/import&gt;
 &lt;import id="92"&gt;/res/fhwf/ecult/lib/SyntaxHighlighter/CodeMirror_Footer.library&lt;/import&gt;
 </pre>
 
 <h3>The eCULT CodeMirror_Header.library</h3>
 
-An "&lt;allow&gt;"
+<p>An "&lt;allow&gt;"
 tag in LON-CAPA ensures that the resource has permission to be viewed. 
 The <font color=blue>codemirror-compressed.js</font> file was downloaded
 from the Codemirror website, but the <font color=blue>codemirror_3_16.css</font>
 requires some modifications after downloading (in particular, it requires
-something like ".CodeMirror div { margin: 0; padding-bottom: 0; }".
+something like ".CodeMirror div { margin: 0; padding-bottom: 0; }".</p>
 
-<pre class='prettyprint'>
+<details><summary><b>Header library</b></summary>
+<textarea rows=9 cols=85>
 &lt;library&gt;
 &lt;link rel="stylesheet" index="11" href="/res/fhwf/ecult/lib/SyntaxHighlighter/codemirror_3_16.css" type="text/css" /&gt;
 &lt;script src="/res/fhwf/ecult/lib/SyntaxHighlighter/codemirror-compressed.js" type="text/javascript"&gt;&lt;/script&gt;
 &lt;allow src="/res/fhwf/ecult/lib/SyntaxHighlighter/codemirror-compressed.js" /&gt;
 &lt;allow src="/res/fhwf/ecult/lib/SyntaxHighlighter/codemirror_3_16.css" /&gt;
 &lt;/library&gt;
-</pre>
+</textarea>
+</details>
 
 <h3>The eCULT CodeMirror_Footer.library</h3>
 
-The eCULT library currently provides the following:
+<p>The eCULT library currently provides the following:</p>
 
-<pre class='prettyprint'>
+<details><summary><b>Footer library</b></summary>
+<textarea rows=15 cols=100>
 &lt;library&gt;
 &lt;script type="loncapa/perl"&gt;
 
@@ -145,14 +146,16 @@ $CodeMirText
 &lt;/script&gt;
 &lt;endouttext /&gt;
 &lt;/library&gt;
-</pre>
+</textarea>
+</details>
 
 <p>
 
-Instead of using this library, one can also use the configuration
-for a single programming language. For example:
+<p>Instead of using this library, one can also use the configuration
+for a single programming language:</p>
 
-<pre class='prettyprint'>
+<details><summary><b>Example</b></summary>
+<textarea rows=15 cols=90>
 &lt;startouttext /&gt;
 &lt;script type="text/javascript"&gt;
 var editor = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0],{
@@ -167,15 +170,33 @@ var editor = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0
     autoCloseBrackets: true});
 &lt;/script&gt;
 &lt;endouttext /&gt;
-</pre>
+</textarea>
+</details>
 
-<b>Hint:</b> when making changes to the footer library, it may be necessary to empty
-the browser cache to see the changes.
+<p><b>Hint:</b> when making changes to the footer library, it may be necessary to empty
+the browser cache to see the changes.</p>
 
+<p>&nbsp;</p>
 <hr>
+<center>
 <address>Software und Dokumente der ProFormA-Gruppe der Ostfalia<br>
 <a href="https://elearning-ostfalia.github.io/proforma/">
-https://elearning-ostfalia.github.io/proforma/</a></address>
+https://elearning-ostfalia.github.io/proforma/</a>
+</address>
+
+<p>
+Dieses Vorhaben wurde aus Mitteln des Bundesministeriums für Bildung und
+Forschung unter den Förderkennzeichen 01PL11066H und 01PL16066H gefördert.
+Die Verantwortung für den Inhalt dieser Webseite liegt bei den Autorinnen.</p>
+
+<table>
+<tr>
+<td><img src="ostfaliaEcultLogo.jpg" alt="eCULT" width="154" height="88"/>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<td><img src="BMBFLogo.jpg" alt="BMBF"/>
+</table>
+</center>
+
 
 </body>
 </html>
